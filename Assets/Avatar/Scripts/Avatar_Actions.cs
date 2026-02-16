@@ -5,6 +5,9 @@ public class Avatar_Move : MonoBehaviour
 {
     [SerializeField] private GameObject objectInteractPoint;
     [SerializeField] private float interactRange = 2f;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private Transform body;
+
 
     private float moveSpeed = 7f;
     private Vector2 moveInput;
@@ -14,6 +17,11 @@ public class Avatar_Move : MonoBehaviour
     void Update()
     {
         Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+        if (move.sqrMagnitude > 0.0001f)
+        {
+            avatarTurn(move);
+        }
+
         transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
     }
 
@@ -63,4 +71,18 @@ public class Avatar_Move : MonoBehaviour
         heldObject.transform.SetParent(null);
         heldObject = null;
     }
+
+    void avatarTurn(Vector3 move)
+    {
+        if (move == Vector3.zero) return;
+
+        Quaternion targetRot = Quaternion.LookRotation(move.normalized, Vector3.up);
+
+        body.rotation = Quaternion.Slerp(
+            body.rotation,
+            targetRot,
+            rotationSpeed * Time.deltaTime
+        );
+    }
+
 }
