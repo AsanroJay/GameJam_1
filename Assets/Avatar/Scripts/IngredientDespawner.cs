@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class IngredientDespawner : MonoBehaviour
+public class DestroyerComp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private bool toDestroy;
+    [SerializeField] private GameObject spawnerLocation;
+    void OnTriggerEnter(Collider collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("Ingredient"))
+        {
+            if (toDestroy)
+                Destroy(collision.gameObject);
+            else
+                collision.gameObject.SetActive(false);
+        }
     }
 }

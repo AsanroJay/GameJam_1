@@ -56,4 +56,24 @@ public class ObjectPoolComp : MonoBehaviour
         return objToReturn;
     }
 
+    public GameObject getObject()
+    {
+        for (int i = 0; i < objPool.Count; i++)
+        {
+            if (!objPool[i].activeInHierarchy)
+            {
+                return objPool[i];
+            }
+        }
+        if (dynamicGrowth)
+        {
+            GameObject obj = (GameObject)Instantiate(objPrefab);
+            obj.SetActive(false);
+            objPool.Add(obj);
+            poolSize++;
+            return obj;
+        }//end if
+        return null;
+    }
+
 }
