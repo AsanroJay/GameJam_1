@@ -8674,7 +8674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738526953}
   m_Layer: 0
-  m_Name: Food
+  m_Name: Food (For Testing)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
