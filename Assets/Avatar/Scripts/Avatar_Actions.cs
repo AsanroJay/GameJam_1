@@ -14,6 +14,11 @@ public class Avatar_Move : MonoBehaviour
 
     private GameObject heldObject;
 
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
@@ -23,6 +28,11 @@ public class Avatar_Move : MonoBehaviour
         }
 
         transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
+
+        if (heldObject != null && heldObject.CompareTag("Untagged"))
+        {
+            heldObject = null;
+        }
     }
 
     public void OnMove(InputValue value)
@@ -52,7 +62,7 @@ public class Avatar_Move : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Food"))
+            if (hit.CompareTag("Food") || hit.CompareTag("Ingredient"))
             {
                 heldObject = hit.gameObject;
                 Rigidbody rb = heldObject.GetComponent<Rigidbody>();
