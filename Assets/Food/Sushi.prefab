@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8696002321436231760}
   - component: {fileID: 5829647776900051956}
   m_Layer: 0
-  m_Name: Placeholder Food
+  m_Name: Sushi
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb8e3b867f989bd4fb2f63134f6128c9, type: 2}
+  - {fileID: 2100000, guid: 9e95b2319e668324087f4e608a35e8ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e70a6b176f06ef4eb5476ef26120f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 3

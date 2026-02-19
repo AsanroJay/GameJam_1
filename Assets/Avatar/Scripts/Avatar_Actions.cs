@@ -150,21 +150,32 @@ public class Avatar_Move : MonoBehaviour
                             interactRange))
             return;
 
-        FoodSpawnerSurface spawner = hit.collider.GetComponent<FoodSpawnerSurface>();
-        if (spawner == null) return;
-
-        if (heldObject != null) return;
-
-        float distance = Vector3.Distance(
-            rayPoint.transform.position,
-            hit.collider.ClosestPoint(rayPoint.transform.position)
-        );
-
-        if (distance > interactRange)
+        ChoppingSurface chopping = hit.collider.GetComponent<ChoppingSurface>();
+        if (chopping != null)
+        {
+            chopping.Interact();
             return;
+        }
 
-        spawner.Interact();
+        FoodSpawnerSurface spawner = hit.collider.GetComponent<FoodSpawnerSurface>();
+        if (spawner != null && heldObject == null)
+        {
+            spawner.Interact();
+            return;
+        }
     }
+
+
+    public GameObject GetHeldObject()
+    {
+        return heldObject;
+    }
+
+    public void ClearHeldObject()
+    {
+        heldObject = null;
+    }
+
 
 
 }
