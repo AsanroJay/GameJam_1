@@ -16,18 +16,25 @@ public class Avatar_Move : MonoBehaviour
     private Vector3 currentVelocity;
     private GameObject heldObject;
 
-    void Update()
+    private Rigidbody rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+        Vector3 movement = move * moveSpeed * Time.fixedDeltaTime;
 
-        currentVelocity = move * moveSpeed;
+        rb.MovePosition(rb.position + movement);
 
         if (move.sqrMagnitude > 0.0001f)
         {
-            AvatarTurn(move);
+            Quaternion targetRot = Quaternion.LookRotation(move.normalized, Vector3.up);
+            body.rotation = Quaternion.Slerp(body.rotation, targetRot, rotationSpeed * Time.fixedDeltaTime);
         }
-
-        transform.position += currentVelocity * Time.deltaTime;
     }
 
 

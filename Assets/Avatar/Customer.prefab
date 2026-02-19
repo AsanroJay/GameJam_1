@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer_Action
   objectInteractPoint: {fileID: 7115129321668589802}
-  interactRange: 2
+  interactRange: 1.5
   walkSpeed: 5
 --- !u!1 &7115129321668589802
 GameObject:
