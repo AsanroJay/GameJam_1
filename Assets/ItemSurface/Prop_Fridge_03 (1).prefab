@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 943942907816724912}
   - component: {fileID: 5047526809345310184}
   - component: {fileID: 2371672749250770344}
+  - component: {fileID: 6307840885452382572}
   m_Layer: 0
   m_Name: Prop_Fridge_03 (1)
   m_TagString: Untagged
@@ -154,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac125ee00261c2d42a6e1813588c7667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodSpawnerSurface
-  foodPrefab: {fileID: 3126137515502497425, guid: b7143ef03f666d842b31ea4ff8412b67, type: 3}
 --- !u!114 &2371672749250770344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +169,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSurface
   snapPoint: {fileID: 4077790303042713405}
   allowedFoodTypes: 00000000
+--- !u!114 &6307840885452382572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286754533952691903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac4e5f4d114b1047b432487fd6f61ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolComp
+  objPrefab: {fileID: 3126137515502497425, guid: b7143ef03f666d842b31ea4ff8412b67, type: 3}
+  poolSize: 3
+  dynamicGrowth: 0
 --- !u!1 &1816650383475631740
 GameObject:
   m_ObjectHideFlags: 0

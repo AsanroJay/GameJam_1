@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ChoppingSurface : MonoBehaviour
 {
-    [SerializeField] private GameObject choppedFishPrefab;
-    [SerializeField] private GameObject sushiPrefab;
+    [SerializeField] private ObjectPoolComp choppedFishPool;
+    [SerializeField] private ObjectPoolComp sushiPool;     
 
     private ItemSurface surface;
 
@@ -22,19 +22,17 @@ public class ChoppingSurface : MonoBehaviour
 
         if (food.foodType == FoodType.RawFish)
         {
-            surface.ClearSurface();
-            Destroy(currentItem);
+            surface.ClearSurface();  
+            GameObject chopped = choppedFishPool.getObject(surface.transform.position, surface.transform.rotation);
+            if (chopped != null)
+                surface.SnapItem(chopped);
 
-            GameObject chopped = Instantiate(choppedFishPrefab);
-            surface.SnapItem(chopped);
             return;
         }
 
-    
         if (food.foodType == FoodType.ChoppedFish)
         {
-            Avatar_Move player = FindObjectOfType<Avatar_Move>();
-
+            Avatar_Move player = FindFirstObjectByType<Avatar_Move>();
             if (player == null) return;
 
             GameObject held = player.GetHeldObject();
@@ -45,16 +43,13 @@ public class ChoppingSurface : MonoBehaviour
 
             if (heldFood.foodType == FoodType.Rice)
             {
-                // remove both ingredients
                 surface.ClearSurface();
-                Destroy(currentItem);
-                Destroy(held);
-
+                held.SetActive(false);
                 player.ClearHeldObject();
 
-                // spawn sushi
-                GameObject sushi = Instantiate(sushiPrefab);
-                surface.SnapItem(sushi);
+                GameObject sushi = sushiPool.getObject(surface.transform.position, surface.transform.rotation);
+                if (sushi != null)
+                    surface.SnapItem(sushi);
             }
         }
     }

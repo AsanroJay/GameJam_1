@@ -1,20 +1,16 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
-
 
 public class ItemSurface : MonoBehaviour
 {
     [SerializeField] private Transform snapPoint;
+    [SerializeField] private List<FoodType> allowedFoodTypes;
 
     private GameObject currentItem;
 
-    [SerializeField] public List<FoodType> allowedFoodTypes;
-
     private void OnTriggerStay(Collider other)
     {
-        // if already occupide ignore
+
         if (currentItem != null) return;
 
         if (!other.CompareTag("Ingredient")) return;
@@ -22,7 +18,7 @@ public class ItemSurface : MonoBehaviour
         FoodItem food = other.GetComponent<FoodItem>();
         if (food != null && food.IsHeld) return;
 
-        if(!allowedFoodTypes.Contains(food.foodType)) return;
+        if (!allowedFoodTypes.Contains(food.foodType)) return;
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb == null) return;
@@ -32,6 +28,7 @@ public class ItemSurface : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+
         if (other.gameObject == currentItem)
         {
             currentItem = null;
@@ -41,17 +38,16 @@ public class ItemSurface : MonoBehaviour
     public void SnapItem(GameObject item)
     {
         Rigidbody rb = item.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
 
-        // stop all motion 
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.isKinematic = true;
-        rb.useGravity = false;
-
-     
         item.transform.position = snapPoint.position;
         item.transform.rotation = snapPoint.rotation;
-
         item.transform.SetParent(snapPoint);
 
         currentItem = item;
@@ -62,6 +58,9 @@ public class ItemSurface : MonoBehaviour
         if (currentItem == null) return;
 
         currentItem.transform.SetParent(null);
+
+        currentItem.SetActive(false);
+
         currentItem = null;
     }
 
@@ -74,6 +73,4 @@ public class ItemSurface : MonoBehaviour
     {
         return currentItem;
     }
-
-
 }
