@@ -5,6 +5,7 @@ public class ScoreUI : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private TextMeshProUGUI scoreText;
+    private int target = 4;
     void Start()
     {
         if (scoreText == null)
@@ -14,13 +15,16 @@ public class ScoreUI : MonoBehaviour
 
         Debug.Log("ScoreUI: Subscribing to SCORE_CHANGED");
 
-        scoreText.text = "SCORE: " + 0;
+        target = FindFirstObjectByType<ScoreManager>().targetScore;
+
+        scoreText.text = "SERVED: " + 0 +"/" + target;
 
         EventBroadcaster.Instance.AddObserver(
             ScoreManager.Events.SCORE_CHANGED,
             UpdateScore
         );
 
+        
 
     }
 
@@ -35,6 +39,6 @@ public class ScoreUI : MonoBehaviour
 
         int newScore = parameters.GetIntExtra("score", -999);
         Debug.Log("ScoreUI: score payload = " + newScore);
-        scoreText.text = "SCORE: " + newScore;
+        scoreText.text = "SERVED: " + newScore + "/" + target;
     }
 }

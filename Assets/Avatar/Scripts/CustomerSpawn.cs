@@ -8,20 +8,26 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] private GameObject[] chairs;
     [SerializeField] private Vector3 chairOffset = new Vector3(0, 1f, 0);
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool spawningActive = true; // control spawning
+
     void Start()
     {
         pool = GetComponent<ObjectPoolComp>();
         time = 0;
+
+        // Subscribe to game end events
+        EventBroadcaster.Instance.AddObserver(ScoreManager.Events.GAME_WON, OnGameEnded);
+        EventBroadcaster.Instance.AddObserver(ScoreManager.Events.GAME_LOST, OnGameEnded);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if (!spawningActive) return;
 
         if (time < timeToSpawn)
+        {
             time += Time.deltaTime;
+        }
         else
         {
             time = 0;
@@ -52,5 +58,10 @@ public class CustomerSpawn : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnGameEnded(Parameters parameters)
+    {
+        spawningActive = false;
     }
 }
