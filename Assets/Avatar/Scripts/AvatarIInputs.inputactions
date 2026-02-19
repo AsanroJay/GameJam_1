@@ -34,18 +34,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PutDown",
+                    "name": "PickUp",
                     "type": "Button",
-                    "id": "2b9f6be8-715b-4aea-908c-4388a5a84407",
+                    "id": "d22778a9-7238-40b7-9c85-14bf05a06a56",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PickUp",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "d22778a9-7238-40b7-9c85-14bf05a06a56",
+                    "id": "bce5da85-c7d3-4017-a890-812122afe1fa",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -111,18 +111,7 @@
                 {
                     "name": "",
                     "id": "9b4c3971-6643-4dfe-98dd-973be9ce71a6",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f28006be-c65e-40dc-8904-8438633fe9d2",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -143,23 +132,23 @@
                 },
                 {
                     "name": "",
-                    "id": "9306a64e-dcad-49f3-9895-06f5342e91a2",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PutDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f6235569-ac24-4e68-b33c-2e1be6499d3e",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "882fda96-d539-454b-8d09-3ff0d5a4499b",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

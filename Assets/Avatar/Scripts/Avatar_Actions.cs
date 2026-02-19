@@ -4,26 +4,32 @@ using UnityEngine.InputSystem;
 public class Avatar_Move : MonoBehaviour
 {
     [SerializeField] private GameObject objectInteractPoint;
-    [SerializeField] private float interactRange = 2f;
+    [SerializeField] private GameObject rayPoint;
+
+    [SerializeField] private float interactRange = 0.5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Transform body;
 
 
     private float moveSpeed = 7f;
     private Vector2 moveInput;
-
+    private Vector3 currentVelocity;
     private GameObject heldObject;
 
     void Update()
     {
         Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+
+        currentVelocity = move * moveSpeed;
+
         if (move.sqrMagnitude > 0.0001f)
         {
-            avatarTurn(move);
+            AvatarTurn(move);
         }
 
-        transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
+        transform.position += currentVelocity * Time.deltaTime;
     }
+
 
     public void OnMove(InputValue value)
     {
@@ -46,19 +52,32 @@ public class Avatar_Move : MonoBehaviour
 
     void TryPickUp()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, interactRange);
+        Vector3 pickupCenter = objectInteractPoint.transform.position;
 
-    
+        Collider[] hits = Physics.OverlapSphere(pickupCenter, interactRange);
 
         foreach (Collider hit in hits)
         {
             if (hit.CompareTag("Food"))
             {
                 heldObject = hit.gameObject;
+
+                FoodItem food = heldObject.GetComponent<FoodItem>();
+                if (food != null)
+                {
+                    food.SetHeld(true);
+                }
+
                 Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                rb.isKinematic = true;
-                heldObject.transform.position = objectInteractPoint.transform.position;
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                    rb.useGravity = false;
+                }
+
+                heldObject.transform.position = pickupCenter;
                 heldObject.transform.SetParent(objectInteractPoint.transform);
+
                 return;
             }
         }
@@ -68,11 +87,18 @@ public class Avatar_Move : MonoBehaviour
     {
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
+        rb.useGravity = true;
         heldObject.transform.SetParent(null);
+        FoodItem food = heldObject.GetComponent<FoodItem>();
+        if (food != null)
+        {
+            food.SetHeld(false);
+        }
+
         heldObject = null;
     }
 
-    void avatarTurn(Vector3 move)
+    void AvatarTurn(Vector3 move)
     {
         if (move == Vector3.zero) return;
 
@@ -84,5 +110,72 @@ public class Avatar_Move : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
     }
+
+    void OnThrow(InputValue value)
+    {
+        if (!value.isPressed || heldObject == null) return;
+
+        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
+        heldObject.transform.SetParent(null);
+
+        Vector3 throwDir = body.forward + Vector3.up * 0.8f;
+        Vector3 finalForce = throwDir.normalized * 16f + currentVelocity * 1.2f;
+
+        rb.AddForce(finalForce, ForceMode.Impulse);
+        FoodItem food = heldObject.GetComponent<FoodItem>();
+        if (food != null)
+        {
+            food.SetHeld(false);
+        }
+
+        heldObject = null;
+    }
+
+    public void OnInteract(InputValue value)
+    {
+        if (!value.isPressed) return;
+
+        TryInteract();
+    }
+    void TryInteract()
+    {
+        RaycastHit hit;
+
+        if (!Physics.Raycast(rayPoint.transform.position,
+                            body.forward,
+                            out hit,
+                            interactRange))
+            return;
+
+        ChoppingSurface chopping = hit.collider.GetComponent<ChoppingSurface>();
+        if (chopping != null)
+        {
+            chopping.Interact();
+            return;
+        }
+
+        FoodSpawnerSurface spawner = hit.collider.GetComponent<FoodSpawnerSurface>();
+        if (spawner != null && heldObject == null)
+        {
+            spawner.Interact();
+            return;
+        }
+    }
+
+
+    public GameObject GetHeldObject()
+    {
+        return heldObject;
+    }
+
+    public void ClearHeldObject()
+    {
+        heldObject = null;
+    }
+
+
 
 }
