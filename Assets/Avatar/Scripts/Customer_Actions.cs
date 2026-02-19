@@ -12,6 +12,22 @@ public class Customer_Action : MonoBehaviour
     private bool hasTarget = false;
     private bool isExiting = false;
     private GameObject chair;
+    public class Events
+    {
+        public const string ON_PRIMARY_INTERACTION = "ON_PRIMARY_INTERACTION";
+        public const string FOOD_TAKEN = "FOOD_TAKEN";
+
+        public const string X_POS = "X_POS";
+        public const string Y_POS = "Y_POS";
+        public const string Z_POS = "Z_POS";
+    }
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver("ON_PRIMARY_INTERACTION");
+        EventBroadcaster.Instance.RemoveObserver("FOOD_TAKEN");
+        Debug.Log("Customer destroyed and observer removed.");
+    }
 
     private void Start()
     {
@@ -70,8 +86,6 @@ public class Customer_Action : MonoBehaviour
         targetPosition = exitPoint.transform.position;
         transform.Rotate(0, 180, 0);
         isExiting = true;
-
-        // Now proceed to exit logic...
     }
 
     void LookForFood()
@@ -97,7 +111,12 @@ public class Customer_Action : MonoBehaviour
         rb.isKinematic = true;
         heldObject.transform.position = objectInteractPoint.transform.position;
         heldObject.transform.SetParent(objectInteractPoint.transform);
-        
+
+        Parameters param = new Parameters();
+
+        Debug.Log("Customer: FOOD_TAKEN event firing");
+        EventBroadcaster.Instance.PostEvent(Events.FOOD_TAKEN, param);
+
         LeaveRestaurant(GameObject.FindGameObjectWithTag("ExitPoint"));
         return;
     }
