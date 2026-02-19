@@ -53,6 +53,8 @@ public class Customer_Action : MonoBehaviour
                     heldObject.transform.SetParent(null);
                     heldObject.SetActive(false);
                     heldObject.transform.position = Vector3.zero;
+
+                    heldObject = null;
                 }
 
             }

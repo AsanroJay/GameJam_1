@@ -155,7 +155,7 @@ public class Avatar_Move : MonoBehaviour
 
         Debug.DrawRay(origin, direction * 2f, Color.green, 1f); 
 
-        if (!Physics.Raycast(origin, direction, out hit, 2f))
+        if (!Physics.Raycast(origin, direction, out hit, 1f))
         {
             Debug.Log("Raycast hit nothing");
             return;
