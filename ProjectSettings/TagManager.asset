@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Food
+  - Ingredient
+  - Chair
+  - Occupied
+  - ExitPoint
   layers:
   - Default
   - TransparentFX
