@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+
 
 public class ItemSurface : MonoBehaviour
 {
@@ -6,15 +10,19 @@ public class ItemSurface : MonoBehaviour
 
     private GameObject currentItem;
 
+    [SerializeField] public List<FoodType> allowedFoodTypes;
+
     private void OnTriggerStay(Collider other)
     {
         // if already occupide ignore
         if (currentItem != null) return;
 
-        if (!other.CompareTag("Food")) return;
+        if (!other.CompareTag("Ingredient")) return;
 
         FoodItem food = other.GetComponent<FoodItem>();
         if (food != null && food.IsHeld) return;
+
+        if(!allowedFoodTypes.Contains(food.foodType)) return;
 
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb == null) return;

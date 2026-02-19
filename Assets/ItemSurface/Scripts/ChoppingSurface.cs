@@ -20,7 +20,7 @@ public class ChoppingSurface : MonoBehaviour
         FoodItem food = currentItem.GetComponent<FoodItem>();
         if (food == null) return;
 
-        if (food.foodType == FoodItem.FoodType.RawFish)
+        if (food.foodType == FoodType.RawFish)
         {
             surface.ClearSurface();
             Destroy(currentItem);
@@ -31,7 +31,7 @@ public class ChoppingSurface : MonoBehaviour
         }
 
     
-        if (food.foodType == FoodItem.FoodType.ChoppedFish)
+        if (food.foodType == FoodType.ChoppedFish)
         {
             Avatar_Move player = FindObjectOfType<Avatar_Move>();
 
@@ -43,7 +43,7 @@ public class ChoppingSurface : MonoBehaviour
             FoodItem heldFood = held.GetComponent<FoodItem>();
             if (heldFood == null) return;
 
-            if (heldFood.foodType == FoodItem.FoodType.Rice)
+            if (heldFood.foodType == FoodType.Rice)
             {
                 // remove both ingredients
                 surface.ClearSurface();

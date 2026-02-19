@@ -1,14 +1,13 @@
 using UnityEngine;
-
+public enum FoodType
+{
+    RawFish,
+    ChoppedFish,
+    Rice,
+    Sushi
+}
 public class FoodItem : MonoBehaviour
 {
-    public enum FoodType
-    {
-        RawFish,
-        ChoppedFish,
-        Rice,
-        Sushi
-    }
 
     public FoodType foodType;
 

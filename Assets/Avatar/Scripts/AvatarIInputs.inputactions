@@ -34,15 +34,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PutDown",
-                    "type": "Button",
-                    "id": "2b9f6be8-715b-4aea-908c-4388a5a84407",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "PickUp",
                     "type": "Button",
                     "id": "d22778a9-7238-40b7-9c85-14bf05a06a56",
@@ -120,18 +111,7 @@
                 {
                     "name": "",
                     "id": "9b4c3971-6643-4dfe-98dd-973be9ce71a6",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f28006be-c65e-40dc-8904-8438633fe9d2",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -142,22 +122,11 @@
                 {
                     "name": "",
                     "id": "a5e1e2fb-4f23-4a32-af4a-e61d65a5de3a",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Chop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9306a64e-dcad-49f3-9895-06f5342e91a2",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PutDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -175,7 +144,7 @@
                 {
                     "name": "",
                     "id": "882fda96-d539-454b-8d09-3ff0d5a4499b",
-                    "path": "<Keyboard>/r",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
