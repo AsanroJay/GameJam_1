@@ -10596,24 +10596,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7629045875970125506}
   m_Mesh: {fileID: -8452922174590431649, guid: e3bdfe6ad12e11446949ff5aa3cbc600, type: 3}
---- !u!1 &3614443485876044824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4240804914740149359}
-  - component: {fileID: 8838401054089771616}
-  - component: {fileID: 5415774435463499694}
-  m_Layer: 0
-  m_Name: RiceSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!224 &3640962278041283697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10721,7 +10703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3893163428434434728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10851,21 +10833,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2508547407654991106}
   m_Mesh: {fileID: 3662368565594118046, guid: e3bdfe6ad12e11446949ff5aa3cbc600, type: 3}
---- !u!4 &4240804914740149359
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3614443485876044824}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.000005900859, z: -0, w: -1}
-  m_LocalPosition: {x: 0.007, y: 1.658, z: 0.09}
-  m_LocalScale: {x: 5, y: 5, z: 4.545454}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 7239745765069208890}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &4268926585058805493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11166,21 +11133,6 @@ Transform:
   - {fileID: 1651169682286716737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5415774435463499694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3614443485876044824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac4e5f4d114b1047b432487fd6f61ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolComp
-  objPrefab: {fileID: 1794160115221960372, guid: b78c37d217bc0804c85502e9adb47600, type: 3}
-  poolSize: 4
-  dynamicGrowth: 0
 --- !u!33 &5433085317746152239
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11218,8 +11170,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282203453
-  m_fontColor: {r: 0.23773581, g: 0.23773581, b: 0.23773581, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11432,8 +11384,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282203453
-  m_fontColor: {r: 0.23773581, g: 0.23773581, b: 0.23773581, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11528,7 +11480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5973497384338113773
 GameObject:
   m_ObjectHideFlags: 0
@@ -11777,6 +11729,8 @@ GameObject:
   - component: {fileID: 3238904959937411069}
   - component: {fileID: 6767860300274009046}
   - component: {fileID: 6767860300274009047}
+  - component: {fileID: 6767860300274009049}
+  - component: {fileID: 6767860300274009048}
   m_Layer: 0
   m_Name: Prop_Pot_05 (1)
   m_TagString: Untagged
@@ -11817,8 +11771,35 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.61288464, y: 0.44493222, z: 0.98741895}
-  m_Center: {x: 0.00852381, y: 0.22246611, z: -0.04792171}
+  m_Size: {x: 0.61288464, y: 1.3864212, z: 0.98741895}
+  m_Center: {x: 0.008523799, y: -0.2482785, z: -0.04792171}
+--- !u!114 &6767860300274009048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767860300274009044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac4e5f4d114b1047b432487fd6f61ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolComp
+  objPrefab: {fileID: 1794160115221960372, guid: b78c37d217bc0804c85502e9adb47600, type: 3}
+  poolSize: 4
+  dynamicGrowth: 0
+--- !u!114 &6767860300274009049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767860300274009044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac125ee00261c2d42a6e1813588c7667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodSpawnerSurface
 --- !u!224 &6846299081978678997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11949,7 +11930,6 @@ Transform:
   - {fileID: 2068042950885497614}
   - {fileID: 1403264330050332170}
   - {fileID: 3653111604534863847}
-  - {fileID: 4240804914740149359}
   - {fileID: 6198341051708535589}
   m_Father: {fileID: 1067629304}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -12407,20 +12387,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8838401054089771616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3614443485876044824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cbbd4a51ff48c40b0ac7c3e849147c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  timeToSpawn: 4
-  surface: {fileID: 6767860300274009046}
 --- !u!114 &8850989629257255003
 MonoBehaviour:
   m_ObjectHideFlags: 0

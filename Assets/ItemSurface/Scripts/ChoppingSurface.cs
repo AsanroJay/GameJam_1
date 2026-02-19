@@ -17,6 +17,8 @@ public class ChoppingSurface : MonoBehaviour
         if (!surface.HasItem()) return;
 
         GameObject currentItem = surface.GetCurrentItem();
+        if (currentItem == null) return;
+
         FoodItem food = currentItem.GetComponent<FoodItem>();
         if (food == null) return;
 

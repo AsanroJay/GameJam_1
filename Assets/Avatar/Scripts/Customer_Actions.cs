@@ -50,8 +50,11 @@ public class Customer_Action : MonoBehaviour
 
                 if (heldObject != null)
                 {
-                    heldObject.transform.SetParent(null); 
-                    Destroy(heldObject);
+                    heldObject.transform.SetParent(null);
+
+                    heldObject.SetActive(false);
+
+                    heldObject.transform.position = Vector3.zero;
                 }
             }
         }
@@ -105,7 +108,6 @@ public class Customer_Action : MonoBehaviour
     void GrabFood(GameObject food)
     {
         heldObject = food;
-        heldObject.tag = "Untagged";
 
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.isKinematic = true;
