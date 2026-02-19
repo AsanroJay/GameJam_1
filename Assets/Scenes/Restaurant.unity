@@ -8807,7 +8807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fc6da602d2ad54984cd339cb3a4762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyerComp
-  toDestroy: 1
+  toDestroy: 0
 --- !u!65 &900073060
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8827,8 +8827,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.983105, y: 11.414207, z: 1.3567265}
-  m_Center: {x: -4.9915524, y: 5.2071037, z: -0.09510738}
+  m_Size: {x: 10.983105, y: 10.020093, z: 1.3567265}
+  m_Center: {x: -4.9915524, y: 5.904161, z: -0.09510738}
 --- !u!1001 &937977775
 PrefabInstance:
   m_ObjectHideFlags: 0
