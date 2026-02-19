@@ -20,6 +20,11 @@ public class TimerUI : MonoBehaviour
         timerText.text = "Time: 0";
     }
 
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(TimerManager.Events.TIMER_UPDATED);
+    }
+
     public void UpdateTimer(Parameters parameters)
     {
         float timeLeft = parameters.GetFloatExtra("time", -1f);

@@ -23,9 +23,11 @@ public class ScoreUI : MonoBehaviour
             ScoreManager.Events.SCORE_CHANGED,
             UpdateScore
         );
+    }
 
-        
-
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(ScoreManager.Events.SCORE_CHANGED);
     }
 
     // Update is called once per frame

@@ -32,6 +32,13 @@ public class ResultManager : MonoBehaviour
         exitButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(OnExitClicked);
     }
 
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(TimerManager.Events.TIMER_UPDATED);
+        EventBroadcaster.Instance.RemoveObserver(ScoreManager.Events.GAME_WON);
+        EventBroadcaster.Instance.RemoveObserver(ScoreManager.Events.GAME_LOST);
+    }
+
     private void OnGameWon(Parameters parameters)
     {
         ShowResult("YOU WIN!", parameters);

@@ -13,13 +13,19 @@ public class CustomerSpawn : MonoBehaviour
     void Start()
     {
         pool = GetComponent<ObjectPoolComp>();
-        time = 0;
+        time = timeToSpawn;
 
         // Subscribe to game end events
         EventBroadcaster.Instance.AddObserver(ScoreManager.Events.GAME_WON, OnGameEnded);
         EventBroadcaster.Instance.AddObserver(ScoreManager.Events.GAME_LOST, OnGameEnded);
     }
 
+    private void OnDestroy()
+    {
+        // Unsubscribe from events to prevent memory leaks
+        EventBroadcaster.Instance.RemoveObserver(ScoreManager.Events.GAME_WON);
+        EventBroadcaster.Instance.RemoveObserver(ScoreManager.Events.GAME_LOST);
+    }
     void Update()
     {
         if (!spawningActive) return;

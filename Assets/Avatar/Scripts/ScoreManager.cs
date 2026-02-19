@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int score = 0;
-    [SerializeField] public int targetScore = 4;
+    [SerializeField] public int targetScore = 1;
 
     public class Events
     {
@@ -20,6 +20,13 @@ public class ScoreManager : MonoBehaviour
         EventBroadcaster.Instance.AddObserver(TimerManager.Events.TIMER_ENDED, OnTimerEnded);
 
         Debug.Log("ScoreManager: Start() running, subscribing to FOOD_TAKEN and TIMER_ENDED");
+    }
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(Customer_Action.Events.FOOD_TAKEN);
+        EventBroadcaster.Instance.RemoveObserver(TimerManager.Events.TIMER_ENDED);
+        Debug.Log("ScoreManager: OnDestroy() running, unsubscribing from FOOD_TAKEN and TIMER_ENDED");
     }
 
     void OnFoodTaken(Parameters parameters)
