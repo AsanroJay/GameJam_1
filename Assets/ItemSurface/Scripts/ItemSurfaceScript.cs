@@ -13,6 +13,9 @@ public class ItemSurface : MonoBehaviour
 
         if (!other.CompareTag("Food")) return;
 
+        FoodItem food = other.GetComponent<FoodItem>();
+        if (food != null && food.IsHeld) return;
+
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb == null) return;
 
@@ -27,7 +30,7 @@ public class ItemSurface : MonoBehaviour
         }
     }
 
-    void SnapItem(GameObject item)
+    public void SnapItem(GameObject item)
     {
         Rigidbody rb = item.GetComponent<Rigidbody>();
 
@@ -53,4 +56,16 @@ public class ItemSurface : MonoBehaviour
         currentItem.transform.SetParent(null);
         currentItem = null;
     }
+
+    public bool HasItem()
+    {
+        return currentItem != null;
+    }
+
+    public GameObject GetCurrentItem()
+    {
+        return currentItem;
+    }
+
+
 }

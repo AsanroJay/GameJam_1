@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5888397341652151348
+--- !u!1 &4228009429891629377
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 397065808821610800}
-  - component: {fileID: 4056238329777490484}
-  - component: {fileID: 3633723257824211224}
-  - component: {fileID: 1707446480342044399}
-  - component: {fileID: 6581016552738810604}
+  - component: {fileID: 4788770773567675324}
+  - component: {fileID: 6410432824975329190}
+  - component: {fileID: 6249837053460450111}
+  - component: {fileID: 611920085808924941}
+  - component: {fileID: 8696002321436231760}
+  - component: {fileID: 5829647776900051956}
   m_Layer: 0
   m_Name: Placeholder Food
   m_TagString: Food
@@ -20,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &397065808821610800
+--- !u!4 &4788770773567675324
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888397341652151348}
+  m_GameObject: {fileID: 4228009429891629377}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.847, y: 2.69, z: 0.07034016}
+  m_LocalRotation: {x: -0.000000045499778, y: -0.00000087679604, z: 0.000000018938623, w: 1}
+  m_LocalPosition: {x: -2.8469994, y: 0.26514, z: 0.07033644}
   m_LocalScale: {x: 0.53028, y: 0.53028, z: 0.53028}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4056238329777490484
+--- !u!33 &6410432824975329190
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888397341652151348}
+  m_GameObject: {fileID: 4228009429891629377}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3633723257824211224
+--- !u!23 &6249837053460450111
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888397341652151348}
+  m_GameObject: {fileID: 4228009429891629377}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,13 +93,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1707446480342044399
+--- !u!65 &611920085808924941
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888397341652151348}
+  m_GameObject: {fileID: 4228009429891629377}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -113,13 +114,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6581016552738810604
+--- !u!54 &8696002321436231760
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888397341652151348}
+  m_GameObject: {fileID: 4228009429891629377}
   serializedVersion: 5
   m_Mass: 3
   m_LinearDamping: 0
@@ -140,3 +141,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5829647776900051956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228009429891629377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e70a6b176f06ef4eb5476ef26120f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem

@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class Avatar_Move : MonoBehaviour
 {
     [SerializeField] private GameObject objectInteractPoint;
+    [SerializeField] private GameObject rayPoint;
+
     [SerializeField] private float interactRange = 0.5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Transform body;
@@ -60,6 +62,12 @@ public class Avatar_Move : MonoBehaviour
             {
                 heldObject = hit.gameObject;
 
+                FoodItem food = heldObject.GetComponent<FoodItem>();
+                if (food != null)
+                {
+                    food.SetHeld(true);
+                }
+
                 Rigidbody rb = heldObject.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
@@ -81,6 +89,12 @@ public class Avatar_Move : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = true;
         heldObject.transform.SetParent(null);
+        FoodItem food = heldObject.GetComponent<FoodItem>();
+        if (food != null)
+        {
+            food.SetHeld(false);
+        }
+
         heldObject = null;
     }
 
@@ -111,8 +125,45 @@ public class Avatar_Move : MonoBehaviour
         Vector3 finalForce = throwDir.normalized * 16f + currentVelocity * 1.2f;
 
         rb.AddForce(finalForce, ForceMode.Impulse);
+        FoodItem food = heldObject.GetComponent<FoodItem>();
+        if (food != null)
+        {
+            food.SetHeld(false);
+        }
 
         heldObject = null;
+    }
+
+    public void OnInteract(InputValue value)
+    {
+        if (!value.isPressed) return;
+
+        TryInteract();
+    }
+    void TryInteract()
+    {
+        RaycastHit hit;
+
+        if (!Physics.Raycast(rayPoint.transform.position,
+                            body.forward,
+                            out hit,
+                            interactRange))
+            return;
+
+        FoodSpawnerSurface spawner = hit.collider.GetComponent<FoodSpawnerSurface>();
+        if (spawner == null) return;
+
+        if (heldObject != null) return;
+
+        float distance = Vector3.Distance(
+            rayPoint.transform.position,
+            hit.collider.ClosestPoint(rayPoint.transform.position)
+        );
+
+        if (distance > interactRange)
+            return;
+
+        spawner.Interact();
     }
 
 
